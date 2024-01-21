@@ -15,16 +15,16 @@ all:
 	else \
 		echo "Directory already exists."; \
 	fi
-	@docker-compose -f $(COMPOSE_FILE) build
+	@docker compose -f $(COMPOSE_FILE) build
 
 up:
-	@docker-compose -f $(COMPOSE_FILE) up -d
+	@docker compose -f $(COMPOSE_FILE) up -d
 
 down:
-	@docker-compose -f $(COMPOSE_FILE) down
+	@docker compose -f $(COMPOSE_FILE) down
 
 logs:
-	@docker-compose -f $(COMPOSE_FILE) logs
+	@docker compose -f $(COMPOSE_FILE) logs
 
 clean:
 	@make down
@@ -39,8 +39,8 @@ fclean:
 	    docker volume rm $$volumes; \
 	fi
 	@make clean
-	@$(RM) $(DB_V)/*
-	@$(RM) $(WWW_V)/*
+	@sudo $(RM) $(DB_V)/*
+	@sudo $(RM) $(WWW_V)/*
 
 re:
 	@make fclean
